@@ -1,3 +1,6 @@
 flask
 flask-sqlalchemy
 flask-marshmallow
+flask-jwt-extended
+flask-mail
+python-dotenv
