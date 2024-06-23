@@ -6,18 +6,15 @@ from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
+from config import DevelopmentConfig, ProductionConfig
+
+if os.environ.get('FLASK_ENV') == 'production':
+    config_class = ProductionConfig
+else:
+    config_class = DevelopmentConfig
 
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-    os.path.join(basedir, 'planets.db')
-app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')  # Change this!
-app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
-app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
+app.config.from_object(config_class)
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
