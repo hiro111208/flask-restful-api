@@ -233,18 +233,18 @@ def remove_planet(planet_id: int):
 class User(db.Model):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    email = Column(String, unique=True)
-    password = Column(String)
+    first_name = Column(String(100))
+    last_name = Column(String(100))
+    email = Column(String(100), unique=True)
+    password = Column(String(100))
 
 
 class Planet(db.Model):
     __tablename__ = 'planets'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    type = Column(String)
-    home_star = Column(String)
+    name = Column(String(100))
+    type = Column(String(100))
+    home_star = Column(String(100))
     mass = Column(Float)
     radius = Column(Float)
     distance = Column(Float)
