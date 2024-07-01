@@ -20,8 +20,8 @@ Planetary API is a Flask-based web application that allows users to manage a col
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/planetary-api.git
-   cd planetary-api
+   git clone https://github.com/hiro111208/flask-restful-api.git
+   cd flask-restful-api
    ```
 
 2. **Create and activate a virtual environment:**
@@ -43,6 +43,7 @@ Planetary API is a Flask-based web application that allows users to manage a col
    ```
    FLASK_ENV=development
    SECRET_KEY=your_secret_key
+   JWT_SECRET_KEY=your_jwt_secret_key
    SQLALCHEMY_DATABASE_URI=your_database_uri
    MAIL_SERVER=your_mail_server
    MAIL_PORT=your_mail_port
